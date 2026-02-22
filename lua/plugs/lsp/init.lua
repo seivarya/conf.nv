@@ -49,10 +49,9 @@ return {
 
 		vim.lsp.config.clangd = {
 			cmd = {
-				vim.fn.stdpath("data") .. "/mason/bin/clangd", -- Correct path using stdpath
+				vim.fn.stdpath("data") .. "/mason/bin/clangd",
 				"--clang-tidy",
 				"--background-index",
-				"--header-insertion=never",
 			},
 			root_markers = { '.clangd', 'compile_commands.json' },
 			filetypes = { 'c', 'cpp' },

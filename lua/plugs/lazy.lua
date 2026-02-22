@@ -17,6 +17,7 @@ require('lazy').setup({
 	{ import = 'plugs.ui.lush' },
 	{ import = 'plugs.lsp.init' },
 	{ import = 'plugs.ui.lualine' },
+	{ import = 'plugs.ui.barbar' },
 	{ import = 'plugs.util.telescope' },
 	{ import = 'plugs.ui.which-key' },
 	{ import = 'plugs.util.treesitter' },
