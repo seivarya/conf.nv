@@ -1,86 +1,39 @@
 return {
 	{
-		"catppuccin/nvim",
-		name = "catppuccin",
+		"folke/tokyonight.nvim",
+		name = "tokyonight",
 		priority = 1000,
 		config = function()
-			require("catppuccin").setup({
-				flavour = "mocha",
+			require("tokyonight").setup({
+				style = "night",
 
-				background = {
-					light = "latte",
-					dark = "mocha",
-				},
-
-				transparent_background = false,
-				show_end_of_buffer = false,
-				term_colors = false,
-
-				dim_inactive = {
-					enabled = false,
-					shade = "dark",
-					percentage = 0.15,
-				},
-
-				-- Force-disable ALL styles everywhere
-				no_italic = true,
-				no_bold = true,
-				no_underline = true,
+				transparent = false,
+				terminal_colors = false,
 
 				styles = {
-					comments     = {},
-					conditionals = {},
-					loops        = {},
-					functions    = {},
-					keywords     = {},
-					strings      = {},
-					variables    = {},
-					numbers      = {},
-					booleans     = {},
-					properties   = {},
-					types        = {},
-					operators    = {},
+					comments = { italic = false },
+					keywords = { italic = false },
+					functions = { italic = false },
+					variables = { italic = false },
+					sidebars = "dark",
+					floats = "dark",
 				},
 
-				lsp_styles = {
-					virtual_text = {
-						errors       = {},
-						hints        = {},
-						warnings     = {},
-						information  = {},
-						ok           = {},
-					},
-					underlines = {
-						errors       = {},
-						hints        = {},
-						warnings     = {},
-						information  = {},
-						ok           = {},
-					},
-					inlay_hints = {
-						background = false,
-					},
-				},
+				on_highlights = function(hl, c)
+					for _, group in pairs(hl) do
+						if type(group) == "table" then
+							group.italic = false
+							group.bold = false
+							group.underline = false
+						end
+					end
+				end,
 
-				color_overrides = {},
-				custom_highlights = {},
-
-				default_integrations = true,
-				auto_integrations = false,
-
-				integrations = {
-					cmp = true,
-					gitsigns = true,
-					nvimtree = true,
-					notify = false,
-					mini = {
-						enabled = true,
-						indentscope_color = "",
-					},
-				},
+				dim_inactive = false,
+				lualine_bold = false,
 			})
 
-			vim.cmd.colorscheme("catppuccin")
+			vim.cmd.colorscheme("tokyonight")
 		end,
 	},
 }
