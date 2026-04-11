@@ -5,48 +5,54 @@ return {
 		priority = 1000,
 		config = function()
 			local colors = {
-				fg_dark = "#1e1e2e",  -- base
-				blue = "#23b4fa",
-				green = "#b6f9a1",
-				mauve = "#cba6f7",
-				red = "#f38ba8",
-				yellow = "#f9e2af",
-				fg = "#cdd6f4",
-				gray = "#313244",      -- surface0
-				inactive_fg = "#6c7086", -- overlay0
+				bg = "#0f0f0f",          -- bg         hsl(2, 2, 6)
+				bg_light = "#1a1a1a",   -- _bg_light  hsl(0, 0, 10)
+				bg_cursor = "#262626",  -- _bg_cursor hsl(0, 0, 15)
+				fg_bright = "#ffffff",  -- fg_bright
+				fg = "#d9d9d9",         -- fg
+				fg_dim = "#b3b3b3",     -- fg_dim
+				fg_dull = "#8c8c8c",    -- fg_dull
+
+				gray = "#4d4d4d",       -- gray
+				gray_light = "#737373", -- gray_light
 			}
 
 			local custom_theme = {
 				normal = {
-					a = { fg = colors.fg_dark, bg = colors.blue, gui = 'none' },
-					b = { fg = colors.fg, bg = colors.gray },
-					c = { fg = colors.fg, bg = colors.fg_dark },
-					z = { fg = colors.fg_dark, bg = colors.blue },
+					a = { fg = colors.bg, bg = colors.fg_bright, gui = 'none' },
+					b = { fg = colors.fg, bg = colors.bg_light },
+					c = { fg = colors.fg_dim, bg = colors.bg },
+					z = { fg = colors.bg, bg = colors.fg_bright, gui = 'none' },
 				},
 				insert = {
-					a = { fg = colors.fg_dark, bg = colors.green, gui = 'none' },
-					b = { fg = colors.fg, bg = colors.gray },
-					c = { fg = colors.fg, bg = colors.fg_dark },
+					a = { fg = colors.bg, bg = colors.fg, gui = 'none' },
+					b = { fg = colors.fg, bg = colors.bg_light },
+					c = { fg = colors.fg_dim, bg = colors.bg },
+					z = { fg = colors.bg, bg = colors.fg, gui = 'none' },
 				},
 				visual = {
-					a = { fg = colors.fg_dark, bg = colors.mauve, gui = 'none' },
-					b = { fg = colors.fg, bg = colors.gray },
-					c = { fg = colors.fg, bg = colors.fg_dark },
+					a = { fg = colors.bg, bg = colors.fg_dim, gui = 'none' },
+					b = { fg = colors.fg, bg = colors.bg_light },
+					c = { fg = colors.fg_dim, bg = colors.bg },
+					z = { fg = colors.bg, bg = colors.fg_dim, gui = 'none' },
 				},
 				replace = {
-					a = { fg = colors.fg_dark, bg = colors.red, gui = 'none' },
-					b = { fg = colors.fg, bg = colors.gray },
-					c = { fg = colors.fg, bg = colors.fg_dark },
+					a = { fg = colors.fg_bright, bg = colors.bg_cursor, gui = 'none' },
+					b = { fg = colors.fg, bg = colors.bg_light },
+					c = { fg = colors.fg_dim, bg = colors.bg },
+					z = { fg = colors.fg_bright, bg = colors.bg_cursor, gui = 'none' },
 				},
 				command = {
-					a = { fg = colors.fg_dark, bg = colors.yellow, gui = 'none' },
-					b = { fg = colors.fg, bg = colors.gray },
-					c = { fg = colors.fg, bg = colors.fg_dark },
+					a = { fg = colors.bg, bg = colors.fg_dull, gui = 'none' },
+					b = { fg = colors.fg, bg = colors.bg_light },
+					c = { fg = colors.fg_dim, bg = colors.bg },
+					z = { fg = colors.bg, bg = colors.fg_dull, gui = 'none' },
 				},
 				inactive = {
-					a = { fg = colors.inactive_fg, bg = colors.fg_dark, gui = 'none' },
-					b = { fg = colors.inactive_fg, bg = colors.fg_dark },
-					c = { fg = colors.inactive_fg, bg = colors.fg_dark },
+					a = { fg = colors.gray_light, bg = colors.bg, gui = 'none' },
+					b = { fg = colors.gray_light, bg = colors.bg },
+					c = { fg = colors.gray, bg = colors.bg },
+					z = { fg = colors.gray_light, bg = colors.bg, gui = 'none' },
 				},
 			}
 
@@ -65,7 +71,7 @@ return {
 					for pos = 1, name ~= 'lualine_z' and #section or #section - 1 do
 						table.insert(section, pos * 2, {
 							empty,
-							color = { fg = colors.fg_dark, bg = colors.fg_dark }
+							color = { fg = colors.bg, bg = colors.bg }
 						})
 					end
 
@@ -116,13 +122,17 @@ return {
 							'diagnostics',
 							source = { 'nvim' },
 							sections = { 'error' },
-							diagnostics_color = { error = { bg = colors.red, fg = colors.fg_dark } },
+							diagnostics_color = {
+								error = { fg = colors.fg_bright, bg = colors.bg_cursor }
+							},
 						},
 						{
 							'diagnostics',
 							source = { 'nvim' },
 							sections = { 'warn' },
-							diagnostics_color = { warn = { bg = colors.mauve, fg = colors.fg_dark } },
+							diagnostics_color = {
+								warn = { fg = colors.fg, bg = colors.bg_cursor }
+							},
 						},
 
 						{ 'filename', path = 1 },

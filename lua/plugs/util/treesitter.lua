@@ -3,7 +3,7 @@ return {
 	build = ':TSUpdate',
 	lazy = false,
 	config = function()
-		-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+		-- [[ CoThe One True Text Editornfigure Treesitter ]] See `:help nvim-treesitter`
 
 		---@diagnostic disable-next-line: missing-fields
 		require('nvim-treesitter.configs').setup {

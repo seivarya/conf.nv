@@ -14,7 +14,8 @@ rtp:prepend(lazypath)
 
 require('lazy').setup({
 
-	{ import = 'plugs.ui.lush' },
+	-- { import = 'plugs.ui.lush' },
+	-- { import = 'plugs.util.shipwright' },
 	{ import = 'plugs.lsp.init' },
 	{ import = 'plugs.ui.lualine' },
 	{ import = 'plugs.util.telescope' },
@@ -22,10 +23,7 @@ require('lazy').setup({
 	{ import = 'plugs.util.treesitter' },
 	{ import = 'plugs.ui.colorscheme' },
 	{ import = 'plugs.util.todo' },
-	{ import = 'plugs.util.colorizer' },
-	{ import = 'plugs.ui.starter' },
-	-- { import = 'plugs.util.presence' },
-	{ import = 'plugs.snippets.luasnip' },
+	-- { import = 'plugs.snippets.luasnip' },
 }, {
 		ui = {
 			icons = {},

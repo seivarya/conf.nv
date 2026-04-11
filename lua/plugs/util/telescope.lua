@@ -82,4 +82,4 @@ return {
 			end, { desc = '[S]earch [N]eovim files' })
 		end,
 	},
-}
+} 
