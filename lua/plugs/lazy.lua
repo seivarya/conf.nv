@@ -14,16 +14,17 @@ rtp:prepend(lazypath)
 
 require('lazy').setup({
 
-	-- { import = 'plugs.ui.lush' },
-	-- { import = 'plugs.util.shipwright' },
+	{ import = 'plugs.ui.lush' },
+	{ import = 'plugs.util.shipwright' },
 	{ import = 'plugs.lsp.init' },
 	{ import = 'plugs.ui.lualine' },
+	{ import = 'plugs.ui.cursor' },
 	{ import = 'plugs.util.telescope' },
 	{ import = 'plugs.ui.which-key' },
 	{ import = 'plugs.util.treesitter' },
 	{ import = 'plugs.ui.colorscheme' },
 	{ import = 'plugs.util.todo' },
-	-- { import = 'plugs.snippets.luasnip' },
+	{ import = 'plugs.snippets.luasnip' },
 }, {
 		ui = {
 			icons = {},

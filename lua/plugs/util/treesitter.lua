@@ -1,23 +1,42 @@
 return {
-	'nvim-treesitter/nvim-treesitter',
-	build = ':TSUpdate',
-	lazy = false,
-	config = function()
-		-- [[ CoThe One True Text Editornfigure Treesitter ]] See `:help nvim-treesitter`
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
 
-		---@diagnostic disable-next-line: missing-fields
-		require('nvim-treesitter.configs').setup {
-			ensure_installed = { 'bash', 'c', 'lua', 'rust', 'python', 'vimdoc' },
-			auto_install = true,
-			highlight = { enable = true },
-			indent = { enable = true },
-		}
+		config = function()
+			require("nvim-treesitter").setup({
+				-- "maintained" is deprecated → use "all" or a list
+				ensure_installed = {
+					"lua", "python", "c", "cpp",
+					"html", "css", "javascript", "typescript"
+				},
 
-		-- There are additional nvim-treesitter modules that you can use to interact
-		-- with nvim-treesitter. You should go explore a few and see what interests you:
-		--
-		--    - Incremental selection: Included, see :help nvim-treesitter-incremental-selection-mod
-		--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-		--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-	end,
+				sync_install = false,
+				auto_install = true,
+
+				highlight = {
+					enable = true,
+					additional_vim_regex_highlighting = false,
+				},
+
+				indent = {
+					enable = true, -- important for per-language indentation
+				},
+
+				autotag = {
+					enable = true,
+					filetypes = {
+						"html", "xml",
+						"javascriptreact", "typescriptreact"
+					},
+				},
+
+				rainbow = {
+					enable = true,
+					extended_mode = false,
+					max_file_lines = nil,
+				},
+			})
+		end,
+	},
 }

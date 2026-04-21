@@ -3,56 +3,46 @@ return {
 		'nvim-lualine/lualine.nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
 		priority = 1000,
-		config = function()
-			local colors = {
-				bg = "#0f0f0f",          -- bg         hsl(2, 2, 6)
-				bg_light = "#1a1a1a",   -- _bg_light  hsl(0, 0, 10)
-				bg_cursor = "#262626",  -- _bg_cursor hsl(0, 0, 15)
-				fg_bright = "#ffffff",  -- fg_bright
-				fg = "#d9d9d9",         -- fg
-				fg_dim = "#b3b3b3",     -- fg_dim
-				fg_dull = "#8c8c8c",    -- fg_dull
 
-				gray = "#4d4d4d",       -- gray
-				gray_light = "#737373", -- gray_light
-			}
+		config = function()
+			local ctp = require("catppuccin.palettes").get_palette("macchiato")
 
 			local custom_theme = {
 				normal = {
-					a = { fg = colors.bg, bg = colors.fg_bright, gui = 'none' },
-					b = { fg = colors.fg, bg = colors.bg_light },
-					c = { fg = colors.fg_dim, bg = colors.bg },
-					z = { fg = colors.bg, bg = colors.fg_bright, gui = 'none' },
+					a = { fg = ctp.base, bg = ctp.blue, gui = 'none' },
+					b = { fg = ctp.text, bg = ctp.surface0 },
+					c = { fg = ctp.subtext1, bg = ctp.base },
+					z = { fg = ctp.base, bg = ctp.blue, gui = 'none' },
 				},
 				insert = {
-					a = { fg = colors.bg, bg = colors.fg, gui = 'none' },
-					b = { fg = colors.fg, bg = colors.bg_light },
-					c = { fg = colors.fg_dim, bg = colors.bg },
-					z = { fg = colors.bg, bg = colors.fg, gui = 'none' },
+					a = { fg = ctp.base, bg = ctp.green, gui = 'none' },
+					b = { fg = ctp.text, bg = ctp.surface0 },
+					c = { fg = ctp.subtext1, bg = ctp.base },
+					z = { fg = ctp.base, bg = ctp.green, gui = 'none' },
 				},
 				visual = {
-					a = { fg = colors.bg, bg = colors.fg_dim, gui = 'none' },
-					b = { fg = colors.fg, bg = colors.bg_light },
-					c = { fg = colors.fg_dim, bg = colors.bg },
-					z = { fg = colors.bg, bg = colors.fg_dim, gui = 'none' },
+					a = { fg = ctp.base, bg = ctp.mauve, gui = 'none' },
+					b = { fg = ctp.text, bg = ctp.surface0 },
+					c = { fg = ctp.subtext1, bg = ctp.base },
+					z = { fg = ctp.base, bg = ctp.mauve, gui = 'none' },
 				},
 				replace = {
-					a = { fg = colors.fg_bright, bg = colors.bg_cursor, gui = 'none' },
-					b = { fg = colors.fg, bg = colors.bg_light },
-					c = { fg = colors.fg_dim, bg = colors.bg },
-					z = { fg = colors.fg_bright, bg = colors.bg_cursor, gui = 'none' },
+					a = { fg = ctp.base, bg = ctp.red, gui = 'none' },
+					b = { fg = ctp.text, bg = ctp.surface0 },
+					c = { fg = ctp.subtext1, bg = ctp.base },
+					z = { fg = ctp.base, bg = ctp.red, gui = 'none' },
 				},
 				command = {
-					a = { fg = colors.bg, bg = colors.fg_dull, gui = 'none' },
-					b = { fg = colors.fg, bg = colors.bg_light },
-					c = { fg = colors.fg_dim, bg = colors.bg },
-					z = { fg = colors.bg, bg = colors.fg_dull, gui = 'none' },
+					a = { fg = ctp.base, bg = ctp.peach, gui = 'none' },
+					b = { fg = ctp.text, bg = ctp.surface0 },
+					c = { fg = ctp.subtext1, bg = ctp.base },
+					z = { fg = ctp.base, bg = ctp.peach, gui = 'none' },
 				},
 				inactive = {
-					a = { fg = colors.gray_light, bg = colors.bg, gui = 'none' },
-					b = { fg = colors.gray_light, bg = colors.bg },
-					c = { fg = colors.gray, bg = colors.bg },
-					z = { fg = colors.gray_light, bg = colors.bg, gui = 'none' },
+					a = { fg = ctp.overlay1, bg = ctp.base, gui = 'none' },
+					b = { fg = ctp.overlay1, bg = ctp.base },
+					c = { fg = ctp.overlay0, bg = ctp.base },
+					z = { fg = ctp.overlay1, bg = ctp.base, gui = 'none' },
 				},
 			}
 
@@ -71,7 +61,7 @@ return {
 					for pos = 1, name ~= 'lualine_z' and #section or #section - 1 do
 						table.insert(section, pos * 2, {
 							empty,
-							color = { fg = colors.bg, bg = colors.bg }
+							color = { fg = ctp.base, bg = ctp.base }
 						})
 					end
 
@@ -123,7 +113,7 @@ return {
 							source = { 'nvim' },
 							sections = { 'error' },
 							diagnostics_color = {
-								error = { fg = colors.fg_bright, bg = colors.bg_cursor }
+								error = { fg = ctp.red, bg = ctp.surface0 }
 							},
 						},
 						{
@@ -131,7 +121,7 @@ return {
 							source = { 'nvim' },
 							sections = { 'warn' },
 							diagnostics_color = {
-								warn = { fg = colors.fg, bg = colors.bg_cursor }
+								warn = { fg = ctp.yellow, bg = ctp.surface0 }
 							},
 						},
 
