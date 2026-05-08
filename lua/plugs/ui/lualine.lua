@@ -5,7 +5,20 @@ return {
 		priority = 1000,
 
 		config = function()
-			local ctp = require("catppuccin.palettes").get_palette("macchiato")
+			local ctp = {
+				base = "#12131b",
+				surface0 = "#0f1016",
+				text = "#c0caf5",
+				subtext1 = "#a9b1d6",
+				blue = "#7aa2f7",
+				green = "#9ece6a",
+				mauve = "#bb9af7",
+				red = "#f7768e",
+				peach = "#ff9e64",
+				yellow = "#e0af68",
+				overlay0 = "#565f89",
+				overlay1 = "#414868"
+			}
 
 			local custom_theme = {
 				normal = {

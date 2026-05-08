@@ -1,59 +1,33 @@
 return {
 	{
-		"catppuccin/nvim",
-		name = "catppuccin",
+		"folke/tokyonight.nvim",
+		name = "tokyonight",
 		priority = 1000,
 		opts = {
-			flavour = "macchiato",
-			transparent_background = true,
+			style = "night",
+			transparent = true,
 			styles = {
-				comments = {},
-				conditionals = {},
-				loops = {},
+				comments = { italic = false },
+				keywords = { italic = false },
 				functions = {},
-				keywords = {},
-				strings = {},
 				variables = {},
-				numbers = {},
-				booleans = {},
-				properties = {},
-				types = {},
-				operators = {},
 			},
-
-			integrations = {
-				treesitter = true,
-				native_lsp = {
-					enabled = true,
-					underlines = {
-						errors = {},
-						hints = {},
-						warnings = {},
-						information = {},
-					},
-				},
-			},
-
-			custom_highlights = function()
-				return {
-					-- kill ALL styling explicitly
-					Normal = { bold = false, italic = false },
-					Comment = { bold = false, italic = false },
-					Keyword = { bold = false, italic = false },
-					Function = { bold = false, italic = false },
-					Identifier = { bold = false, italic = false },
-					Statement = { bold = false, italic = false },
-					Type = { bold = false, italic = false },
-					PreProc = { bold = false, italic = false },
-					Special = { bold = false, italic = false },
-					Constant = { bold = false, italic = false },
-				}
+			on_highlights = function(hl, c)
+				hl.Normal = { bold = false, italic = false }
+				hl.Comment = { bold = false, italic = false }
+				hl.Keyword = { bold = false, italic = false }
+				hl.Function = { bold = false, italic = false }
+				hl.Identifier = { bold = false, italic = false }
+				hl.Statement = { bold = false, italic = false }
+				hl.Type = { bold = false, italic = false }
+				hl.PreProc = { bold = false, italic = false }
+				hl.Special = { bold = false, italic = false }
+				hl.Constant = { bold = false, italic = false }
 			end,
 		},
-
 		config = function(_, opts)
-			require("catppuccin").setup(opts)
-			vim.cmd.colorscheme("catppuccin")
+			require("tokyonight").setup(opts)
+			vim.cmd.colorscheme("tokyonight")
 		end,
 	},
 }
